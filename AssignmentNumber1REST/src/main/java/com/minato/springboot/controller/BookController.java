@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -45,7 +46,7 @@ public class BookController {
 	}
 
 	@PostMapping("book")
-	public ResponseEntity<?> createUser(Book book, UriComponentsBuilder builder) {
+	public ResponseEntity<?> createUser(@RequestBody Book book, UriComponentsBuilder builder) {
 
 		boolean flag = bookService.addBooks(book);
 
@@ -57,8 +58,8 @@ public class BookController {
 		return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
 	}
 
-	@PutMapping("book")
-	public ResponseEntity<Book> updateUser(Book book) {
+	@PutMapping("book/{id}")
+	public ResponseEntity<Book> updateUser(@RequestBody Book book) {
 		bookService.updateBooks(book);
 		return new ResponseEntity<Book>(book, HttpStatus.OK);
 	}

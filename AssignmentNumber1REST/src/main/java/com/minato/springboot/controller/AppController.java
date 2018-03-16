@@ -17,13 +17,13 @@ public class AppController {
 
 	@RequestMapping("/")
 	String home(ModelMap modal) {
-		modal.addAttribute("title", "CRUD Example");
+		modal.addAttribute("title", "AngularJS vs Bootstrap");
 		return "index";
 	}
 
-	@RequestMapping("/partials/{page}")
-	String partialHandler(@PathVariable("page") final String page) {
-		return page;
-	}
+	 @RequestMapping("/partials/{page}")
+	 String partialHandler(@PathVariable("page") final String page) {
+	 return page;
+	 }
 
 }

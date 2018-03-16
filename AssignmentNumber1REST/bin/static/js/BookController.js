@@ -40,11 +40,11 @@ angular
 											self.book.id);
 								}
 							}
-
-							function createUser(user) {
+							
+							function createUser(book) {
 								console.log('About to create user');
 								BookService
-										.createUser(user)
+										.createUser(book)
 										.then(
 												function(response) {
 													console
@@ -52,7 +52,7 @@ angular
 													self.successMessage = 'User created successfully';
 													self.errorMessage = '';
 													self.done = true;
-													self.user = {};
+													self.book = {};
 													$scope.myForm
 															.$setPristine();
 												},
@@ -65,14 +65,12 @@ angular
 												});
 							}
 
-							function updateUser(user, id) {
+							function updateUser(book, id) {
 								console.log('About to update user');
-								BookService
-										.updateUser(user, id)
+								BookService.updateUser(book, id)
 										.then(
 												function(response) {
-													console
-															.log('User updated successfully');
+													console.log('User updated successfully');
 													self.successMessage = 'User updated successfully';
 													self.errorMessage = '';
 													self.done = true;
@@ -119,13 +117,13 @@ angular
 								BookService
 										.getUser(id)
 										.then(
-												function(user) {
-													self.user = user;
+												function(book) {
+													self.book = book;
 												},
 												function(errResponse) {
 													console
 															.error('Error while removing user '
-																	+ id
+																	+ idbook
 																	+ ', Error :'
 																	+ errResponse.data);
 												});
@@ -133,7 +131,7 @@ angular
 							function reset() {
 								self.successMessage = '';
 								self.errorMessage = '';
-								self.user = {};
+								self.book = {};
 								$scope.myForm.$setPristine(); // reset Form
 							}
 						} ]);
