@@ -74,6 +74,7 @@ angular
 													self.successMessage = 'User updated successfully';
 													self.errorMessage = '';
 													self.done = true;
+													self.book = {};
 													$scope.myForm
 															.$setPristine();
 												},
